@@ -10,6 +10,11 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input youre name");
+            string ChUser;
+            ChUser = Console.ReadLine();
+            Console.WriteLine("Hello, "); Console.WriteLine(ChUser);
+            Console.ReadLine();
         }
     }
 }
