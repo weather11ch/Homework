@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +14,9 @@ namespace SecondHomeWork
     {
         static void Main(string[] args)
         {
-            double k; 
+            int k; 
             Console.WriteLine("Введите номер задачи (от 1 до 7)");
-            k = Convert.ToDouble(Console.ReadLine());
+            k = Int32.Parse(Console.ReadLine());
             if (k==1) Second1();
             if (k==2) Second2();
             if (k==3) Second3();
@@ -259,10 +262,60 @@ namespace SecondHomeWork
 
             {
                 int number;
-                Console.WriteLine("Введите число");
-                number = Convert.ToInt32(Console.ReadLine());
+                int numTys; int numSot; int numDes; int numEd; int result;
+                bool a; bool b; bool c; bool d;
+                //a
+                Console.WriteLine("Введите трехзначное число");
+                number = Int32.Parse(Console.ReadLine());
+                numSot = number / 100;
+                if (numSot > 0)
+                {
+                    numEd = number % 100;
+                    numDes = (number - (100 * numSot)) / 10; result = numSot + numDes + numEd;
+                    if (number * number == Math.Pow(result, 3)) a = true; else a = false;
+                    Console.WriteLine("a " + a);
+                } else Console.WriteLine("Введено не трехзначное число");
+                //b
+                Console.WriteLine("Введите чеырехзначное число");
+                number = Int32.Parse(Console.ReadLine());
+                numTys = number / 1000;
+                if (numTys > 0) //4-х значное число
+                {
+                     numSot = (number - (1000*numTys))/ 100;
+                     numEd = number % 1000;
+                    if (numSot >= 0)
+                    {
+                         numDes = (number - (1000 * numTys) - (100*numSot)) / 10;
+                        if ((numTys + numSot) == (numDes + numEd)) b = true; else b = false; //b
+                        Console.WriteLine("b " + b);
+                    }
+                }
+                else Console.WriteLine("Введено не четырехзначное число");
+                //c
+                Console.WriteLine("Введите трехзначное число");
+                number = Int32.Parse(Console.ReadLine());
+                numSot = number / 100;
+                if (numSot > 0)
+                {
+                    numEd = number % 100;
+                    numDes = (number - (100 * numSot)) / 10;
+                    if (numSot == numDes | numDes == numEd | numSot == numDes) c = true; else c = false;
+                    Console.WriteLine("c " + c);
+                }
+                else Console.WriteLine("Введено не трехзначное число");
                 
-
+                //d
+                Console.WriteLine("Введите положительное вещественное  число");
+                decimal num4 =decimal.Parse(Console.ReadLine());
+                decimal num4Dec1 = num4 - Math.Round(num4); Console.WriteLine("num4Dec1 " + num4Dec1);//выделение дробной части
+                decimal num4Round1 = Math.Round(num4Dec1*10); Console.WriteLine("num4Round1 " + num4Round1);//1 цифра
+                decimal num4Dec2 = num4Dec1 * 10 - num4Round1;
+                decimal num4Round2 = Math.Round(num4Dec2 * 10); Console.WriteLine("num4Round2 " + num4Round2);// 2 цифра
+                decimal num4Dec3 = num4Dec2 * 10 - num4Round2;
+                decimal num4Round3 = Math.Round(num4Dec3 * 10); Console.WriteLine("num4Round3 " + num4Round3);// 2 цифра
+                if (num4Round1 ==0 | num4Round2 == 0 | num4Round3 == 0) d = true; else d = false;
+                    Console.WriteLine("d " + d);
+                
                 Console.ReadLine();
             }
         }
