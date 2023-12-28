@@ -11,7 +11,7 @@ namespace ThirdHomeWork
     {
         static void Main(string[] args)
         {
-            Third3();
+            Third4();
        
         void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
@@ -59,9 +59,9 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                int k = 0;
-                
-                Console.WriteLine("наибольший делитель (кроме самого A) числа " + a + "равен" + k);
+                int k = a -1;
+                while(a%k !=0) { k--; }
+                Console.WriteLine("наибольший делитель числа " + a + " равен " + k);
                 Console.ReadLine();
             }
         }
