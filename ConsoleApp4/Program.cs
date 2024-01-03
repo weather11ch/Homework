@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace ThirdHomeWork
         static void Main(string[] args)
         {
             int k;
-            Console.WriteLine("Введите номер задачи (от 1 до 5)");
+            Console.WriteLine("Введите номер задачи (от 1 до 7)");
             k = Int32.Parse(Console.ReadLine());
             if (k == 1) Third1();
             if (k == 2) Third2();
@@ -21,7 +22,7 @@ namespace ThirdHomeWork
             if (k == 5) Third5();
             if (k == 6) Third6();
             if (k == 7) Third7();
-            Third5();
+            
        
         void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
@@ -54,13 +55,13 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                int k = 0;
-                for (int i = 1; i <= a*a; i++)
+                int n = 0;//кол-во
+                for (int i = 0; i <= Math.Sqrt(a); i++)
                 {
-                    if (i * i < a) k = k + 1; 
+                    if (i * i < a) n = n + 1; 
                     
                 }
-                Console.WriteLine("количество положительных целых чисел, квадрат которых меньше " + a + "равно" + k);
+                Console.WriteLine("количество положительных целых чисел, квадрат которых меньше " + a + "равно" + n);
                 Console.ReadLine();
 
             }
@@ -69,9 +70,9 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                int k = a -1;
-                while(a%k !=0) { k--; }
-                Console.WriteLine("наибольший делитель числа " + a + " равен " + k);
+                int n = a -1;
+                while(a%n !=0) { n--; }
+                Console.WriteLine("наибольший делитель числа " + a + " равен " + n);
                 Console.ReadLine();
             }
             void Third5()
@@ -97,12 +98,32 @@ namespace ThirdHomeWork
             //6.	Пользователь вводит 1 положительное число (N). Выведите N-ое число ряда фибоначчи.
             //В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое и второе считаются равными 1
             {
-
+                Console.WriteLine("Введите число");
+                int n = Int32.Parse(Console.ReadLine());
+                int m = 1; int t = 1 ; int res = 1;
+                for (int i= 3; i <= n; i++)
+                {
+                    res = m + t;
+                    m = t; t = res;
+                }
+                Console.WriteLine(res);
+                Console.ReadLine();
             }
             void Third7()
             //7.	Пользователь вводит 2 числа. Найти их наибольший общий делитель используя алгоритм Евклида.
             {
+                Console.WriteLine("Введите 2 числа");
+                int a = Int32.Parse(Console.ReadLine());
+                int b = Int32.Parse(Console.ReadLine());
+                int res = 0; int n; int m;
+                while (a!=b) 
+                { 
+                if (b >= a) {b=b- a; } else {a = a-b; }
 
+                }
+
+                Console.WriteLine("НОД " + a);
+                Console.ReadLine();
             }
         }
     }
