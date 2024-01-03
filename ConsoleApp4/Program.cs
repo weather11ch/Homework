@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
@@ -13,7 +14,7 @@ namespace ThirdHomeWork
         static void Main(string[] args)
         {
             int k;
-            Console.WriteLine("Введите номер задачи (от 1 до 7)");
+            Console.WriteLine("Введите номер задачи (от 1 до 8)");
             k = Int32.Parse(Console.ReadLine());
             if (k == 1) Third1();
             if (k == 2) Third2();
@@ -22,9 +23,9 @@ namespace ThirdHomeWork
             if (k == 5) Third5();
             if (k == 6) Third6();
             if (k == 7) Third7();
-            
-       
-        void Third1()
+            if (k == 8) Third8();
+
+            void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
         {
             Console.WriteLine("Введите 2 числа");
@@ -122,9 +123,55 @@ namespace ThirdHomeWork
 
                 }
 
+                Console.WriteLine("НОД равен " + a);
+                Console.ReadLine();
+            }
+            void Third8()
+            //8.Пользователь вводит целое положительное число, которое является кубом целого числа N.
+            //Найдите число N методом половинного деления.
+            {
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                int c = Math.Abs(a);
+                int b = 0; int t = a/2;
+                while ( Math.Abs(Math.Pow(t, 3) - a) != 0)
+                {
+                    if (Math.Pow(t, 3) > a) { c = t; } else {  b = t; }
+                    t = (c + b) / 2; 
+                    if (Math.Abs(c - b) <= 1) { t = 0; Console.WriteLine("Введенное целое число не является кубом целого числа"); break; } 
+                    
+                }
+                if (t != 0) Console.WriteLine("N " + t);
+               
+                Console.ReadLine();
+            }
+            void Third9()
+            //9.	Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
+            
+            {
+                Console.WriteLine("Введите 2 числа");
+                int a = Int32.Parse(Console.ReadLine());
+                int b = Int32.Parse(Console.ReadLine());
+                int res = 0; int n; int m;
+                while (a != b)
+                {
+                    if (b >= a) { b = b - a; } else { a = a - b; }
+
+                }
+
                 Console.WriteLine("НОД " + a);
                 Console.ReadLine();
             }
+            void Third10()
+            //10.Пользователь вводит 1 число.Найти число, которое является зеркальным отображением последовательности цифр заданного числа,
+            //например, задано число 123, вывести 321.
+            {
+
+            }
+//11.Пользователь вводит целое положительное число(N). Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных. 
+//12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры. Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
+//13.Дано натуральное n. Вычислить:
+
         }
     }
 }
