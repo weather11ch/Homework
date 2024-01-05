@@ -14,7 +14,7 @@ namespace ThirdHomeWork
         static void Main(string[] args)
         {
             int k;
-            Console.WriteLine("Введите номер задачи (от 1 до 8)");
+            Console.WriteLine("Введите номер задачи (от 1 до 9)");
             k = Int32.Parse(Console.ReadLine());
             if (k == 1) Third1();
             if (k == 2) Third2();
@@ -24,7 +24,8 @@ namespace ThirdHomeWork
             if (k == 6) Third6();
             if (k == 7) Third7();
             if (k == 8) Third8();
-
+            if (k == 9) Third9();
+            if (k == 10) Third10();
             void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
         {
@@ -149,24 +150,31 @@ namespace ThirdHomeWork
             //9.	Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
             
             {
-                Console.WriteLine("Введите 2 числа");
+                Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                int b = Int32.Parse(Console.ReadLine());
-                int res = 0; int n; int m;
-                while (a != b)
+                int n = 0; int b = a;
+                while (a % 10 != 0)
                 {
-                    if (b >= a) { b = b - a; } else { a = a - b; }
-
+                    if ((a % 2) != 0) n = n + 1;
+                    a = a/ 10;                                       
                 }
-
-                Console.WriteLine("НОД " + a);
+                Console.WriteLine(" кол-во нечетных цифр n " + n);
                 Console.ReadLine();
             }
             void Third10()
             //10.Пользователь вводит 1 число.Найти число, которое является зеркальным отображением последовательности цифр заданного числа,
             //например, задано число 123, вывести 321.
             {
-
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                int b = 0;
+                while (a % 10 != 0)
+                {
+                    b = b *10 + a % 10;
+                    a = a / 10;
+                }
+                Console.WriteLine("b " + b);
+                Console.ReadLine();
             }
 //11.Пользователь вводит целое положительное число(N). Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных. 
 //12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры. Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
