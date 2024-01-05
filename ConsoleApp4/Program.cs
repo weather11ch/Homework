@@ -207,6 +207,27 @@ namespace ThirdHomeWork
             //12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры.
             //Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
             {
+                Console.WriteLine("Введите 2 числа");
+                int a = Int32.Parse(Console.ReadLine());
+                int b = Int32.Parse(Console.ReadLine());
+                bool res = false; int n = a; int m = a; int t = b; int l = b;
+                
+                while (m%10 != 0)
+                {
+                    n = m % 10;
+                    //Console.WriteLine("n " + n); Console.ReadLine();
+                    l = b;
+                    while (l % 10 != 0)
+                    {
+                        t = l % 10;
+                        //Console.WriteLine("t " + t); Console.ReadLine();
+                        if (t == n) { res = true; break; }
+                        else l = l/10;
+                    } 
+                    m = m / 10; //Console.WriteLine("m " + m); Console.ReadLine();
+                }
+                Console.WriteLine(res);
+                Console.ReadLine() ;
 
             }
             void Third13()
