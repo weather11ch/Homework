@@ -14,7 +14,7 @@ namespace ThirdHomeWork
         static void Main(string[] args)
         {
             int k;
-            Console.WriteLine("Введите номер задачи (от 1 до 13)");
+            Console.WriteLine("Введите номер задачи (от 1 до 23)");
             k = Int32.Parse(Console.ReadLine());
             if (k == 1) Third1();
             if (k == 2) Third2();
@@ -29,6 +29,17 @@ namespace ThirdHomeWork
             if (k == 11) Third11();
             if (k == 12) Third12();
             if (k == 13) Third13();
+            if (k == 14) Third14();
+            if (k == 15) Third15();
+            if (k == 16) Third16();
+            if (k == 17) Third17();
+            if (k == 18) Third18();
+            if (k == 19) Third19();
+            if (k == 20) Third20();
+            if (k == 21) Third21();
+            if (k == 22) Third22();
+            if (k == 23) Third23();
+
 
             void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
@@ -233,9 +244,80 @@ namespace ThirdHomeWork
             void Third13()
             //13.Дано натуральное n. Вычислить:
             {
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                double s = 0.00; 
+                for (int i = 1; i <=a; i++)
+                {
+                    s = s + (1.0 + 1.0 / (i * i)); Console.WriteLine("s " + s);                    
+                }
+                Console.WriteLine(s);
+                
+            }
+            void Third14()
+            //14.	Дано действительное число х, натуральное число n. Вычислить:
+            {
+                Console.WriteLine("Введите натуральное число");
+                int n = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Введите вещественное число");
+                double x = Double.Parse(Console.ReadLine());
+                double s1 =  x; double s2 = 1/x;
+
+                for (int i = 0; i <= n; i++)
+                {
+                    s1 = s1* (x + i); 
+                    s2 = s2 + 1.0/s1;
+                }
+                
+                Console.WriteLine(s2);
+             }
+
+            void Third15()
+            //13.Дано натуральное n. Вычислить:
+            {
 
             }
+            void Third16()
+            //13.Дано натуральное n. Вычислить:
+            {
 
+            }
+            void Third17()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third18()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third19()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third20()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third21()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third22()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            void Third23()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
+            
         }
     }
 }
