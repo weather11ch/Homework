@@ -14,7 +14,7 @@ namespace ThirdHomeWork
         static void Main(string[] args)
         {
             int k;
-            Console.WriteLine("Введите номер задачи (от 1 до 9)");
+            Console.WriteLine("Введите номер задачи (от 1 до 13)");
             k = Int32.Parse(Console.ReadLine());
             if (k == 1) Third1();
             if (k == 2) Third2();
@@ -26,6 +26,10 @@ namespace ThirdHomeWork
             if (k == 8) Third8();
             if (k == 9) Third9();
             if (k == 10) Third10();
+            if (k == 11) Third11();
+            if (k == 12) Third12();
+            if (k == 13) Third13();
+
             void Third1()
         //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
         {
@@ -176,9 +180,40 @@ namespace ThirdHomeWork
                 Console.WriteLine("b " + b);
                 Console.ReadLine();
             }
-//11.Пользователь вводит целое положительное число(N). Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных. 
-//12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры. Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
-//13.Дано натуральное n. Вычислить:
+            void Third11()
+            //11.Пользователь вводит целое положительное число(N).
+            //Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных. 
+            {
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                int n = 0; int m = 0; int t;
+                for (int i = 2; i <= a; i++) {
+                    //Console.WriteLine("i " + i); //Console.ReadLine();
+                    t = i; m = 0; n = 0;
+                    while (t % 10 != 0 || t / 10 > 0)
+                    {
+                        if ((t % 2) != 0) n = n + t%10; else m= m + t%10;
+                        t = t / 10; //Console.WriteLine("n " + n + " m " + m + " t " + t); 
+                        //Console.ReadLine() ;
+
+                    }
+                    if (m > n) Console.WriteLine(i);// Console.ReadLine();
+                }
+                
+                //20
+                Console.ReadLine();
+            }
+            void Third12()
+            //12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры.
+            //Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
+            {
+
+            }
+            void Third13()
+            //13.Дано натуральное n. Вычислить:
+            {
+
+            }
 
         }
     }
