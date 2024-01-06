@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.Remoting;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -132,10 +133,10 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите 2 числа");
                 int a = Int32.Parse(Console.ReadLine());
                 int b = Int32.Parse(Console.ReadLine());
-                int res = 0; int n; int m;
+                int n; int m;
                 while (a!=b) 
                 { 
-                if (b >= a) {b=b- a; } else {a = a-b; }
+                if (b >= a) {b = b - a; } else {a = a - b; }
 
                 }
 
@@ -223,12 +224,12 @@ namespace ThirdHomeWork
                 int b = Int32.Parse(Console.ReadLine());
                 bool res = false; int n = a; int m = a; int t = b; int l = b;
                 
-                while (m%10 != 0)
+                while (m%10 != 0 || m / 10 > 0)
                 {
                     n = m % 10;
                     //Console.WriteLine("n " + n); Console.ReadLine();
                     l = b;
-                    while (l % 10 != 0)
+                    while (l % 10 != 0 || l / 10 > 0)
                     {
                         t = l % 10;
                         //Console.WriteLine("t " + t); Console.ReadLine();
@@ -284,10 +285,14 @@ namespace ThirdHomeWork
 
             }
             void Third16()
-            //13.Дано натуральное n. Вычислить:
+            //16.	Вычислить приближенно значение бесконечной суммы
+            //(справа от каждой суммы дается ее точное значение, с которым можно сравнить полученный ответ):
+            //Нужное приближение считается полученным, если вычислена сумма нескольких первых слагаемых,
+            //и очередное слагаемое оказалось по модулю меньше данного положительного числа D (точность). 
             {
 
             }
+
             //сумма цифр введенного числа
             int SumNumerals(int n)
             {
@@ -317,9 +322,31 @@ namespace ThirdHomeWork
                     }
                 } Console.ReadLine();
             }
+            //факториал числа
+            int Factorial(int n)
+            {
+                int s = 1;
+                for (int i = 1; i <= n; i++) { s = s * i; }
+                return s;
+            }
+            //
             void Third18()
             //18.	Найти все трехзначные числа, представимые в виде сумм факториалов своих цифр.
-            {
+            { int s = 0; int s1; int s2; int s3; int t;
+                for (int i = 100; i <= 999; i++)
+                {//Console.WriteLine("number " + i);
+                    t = i; s = 0;
+                    while (t % 10 != 0 || t / 10 > 0)
+                    {
+                        if (t % 10 != 0)
+                        {
+                          s = s + Factorial(t % 10); //Console.WriteLine("цифра " + t%10 + " факториал " + Factorial(t % 10) + " сумма факториалов " + s);
+                        }
+                        t = t / 10;
+
+                    }
+                    if (s ==i) { Console.WriteLine("число " + i + " представимо в виде суммы факториалов своих цифр"); }
+                }
 
             }
             void Third19()
@@ -341,12 +368,14 @@ namespace ThirdHomeWork
 
             }
             void Third22()
-            //13.Дано натуральное n. Вычислить:
+            //22.	Дано натуральное k.
+            //Напечатать k-ю цифру последовательности 149162536..., в которой выписаны подряд квадраты всех натуральных чисел.
             {
 
             }
             void Third23()
-            //13.Дано натуральное n. Вычислить:
+            //23.	Дано натуральное k.
+            //Напечатать k-ю цифру последовательности 1123581321..., в которой выписаны подряд все числа Фибоначчи.
             {
 
             }
