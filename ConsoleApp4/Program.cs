@@ -377,28 +377,84 @@ namespace ThirdHomeWork
                 if (s==a) { Console.WriteLine("число совершенное, равно сумме всех своих положительных делителей"); } 
                 else { Console.WriteLine("число не равно сумме всех своих положительных делителей"); }
             }
-                
 
+            int countNumerals(int n)
+            {
+                int result = 0;
+                while (n > 0) {
+                    result++;
+                    n = n / 10;
+                }
+                return result;
+            }
 
             void Third21()
             //21.	Дано натуральное k. Напечатать k-ю цифру последовательности 1234567891011121314...,
             //в которой выписаны подряд все натуральные числа.
             {
-
+                Console.WriteLine("Введите натуральное число");
+                int a = Int32.Parse(Console.ReadLine()); int length = 0; int t = 1; int j;
+                while ( length < a ) 
+                    {
+                    Console.Write(t);
+                    length = length + countNumerals(t);
+                    t++;
+                    }
+                t--;
+                int number = t / Convert.ToInt32(Math.Pow(10, length - a));
+                Console.WriteLine("\n" + t);
+                Console.WriteLine(number % 10);
+                
             }
             void Third22()
             //22.	Дано натуральное k.
             //Напечатать k-ю цифру последовательности 149162536..., в которой выписаны подряд квадраты всех натуральных чисел.
             {
-
+                Console.WriteLine("Введите натуральное число");
+                int a = Int32.Parse(Console.ReadLine()); int length = 0; int t = 1; int j;
+                while (length < a)
+                {
+                    Console.Write(t*t);
+                    length = length + countNumerals(t*t);
+                    t++;
+                }
+                t--;
+                int number = t*t / Convert.ToInt32(Math.Pow(10, length - a));
+                Console.WriteLine("\n" + t * t);
+                Console.WriteLine(number % 10);
             }
+
             void Third23()
             //23.	Дано натуральное k.
             //Напечатать k-ю цифру последовательности 1123581321..., в которой выписаны подряд все числа Фибоначчи.
             {
-
+                Console.WriteLine("Введите натуральное число");
+                int a = Int32.Parse(Console.ReadLine()); int length = 0; int t = 1; int j;
+                while (length < a)
+                {
+                    Console.Write(numFib(t));
+                    length = length + countNumerals(numFib(t));
+                    t++;
+                }
+                t--;
+                int number = numFib(t) / Convert.ToInt32(Math.Pow(10, length - a));
+                Console.WriteLine("\n" + numFib(t));
+                Console.WriteLine(number % 10);
             }
-            
+            int numFib(int n)
+            {
+                //Console.WriteLine("Введите число");
+                //int n = Int32.Parse(Console.ReadLine());
+                int m = 1; int t = 1; int res = 1;
+                for (int i = 3; i <= n; i++)
+                {
+                    res = m + t;
+                    m = t; t = res;
+                }
+                return res;
+                //Console.WriteLine(res);
+                //Console.ReadLine();
+            }
         }
     }
 }
