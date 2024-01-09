@@ -65,7 +65,7 @@ namespace HomeWork4
                     t = l-1 - i;
                     res[t] = r[i];
                 }
-                Console.WriteLine("перевернутый массив");
+                Console.WriteLine("перевернутый массив реверс");
                 writeArray(res);
                 //Console.ReadLine();
                 //7
@@ -76,9 +76,56 @@ namespace HomeWork4
                 }
                 Console.WriteLine("количество нечетных элементов массива равно " + j);
                 Console.ReadLine();
-
+                
             }
-            forth1();
+            //forth1();
+            void forth8()
+                {
+                //8
+                
+                if (l % 2 == 0)
+                {
+                    for (int i = 0; i <= (l - 1) / 2; i++)
+                    {
+                        t = (l - 1) / 2 + 1 + i;
+                        res[t] = r[i];
+                        res[i] = r[t];
+
+                    }
+                } else
+                {
+                    for (int i = 0; i < (l - 1) / 2; i++)
+                    {
+                        t = (l - 1) / 2 + 1 + i;
+                        res[t] = r[i];
+                        res[i] = r[t];
+
+                    }
+                    res[(l-1)/2] = r[(l-1)/2];
+                }
+               
+                Console.WriteLine("перевернутый массив");
+                writeArray(res);
+                Console.ReadLine() ;
+            }
+            //forth8();
+            void forth9() 
+            {
+                Console.WriteLine("задайте длину одномерного массива");
+                int l = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("задайте максимальное число диапазона значений массива");
+                int n = Int32.Parse(Console.ReadLine());
+
+                int[] r = createArray(l, n); Console.ReadLine();
+                int temp = r[0]; int t;
+                int[] res = new int[l];
+
+                for (int i = 0;i < l; i++)
+                {
+
+                }
+            }
+            forth9();
         }
     }
 }
