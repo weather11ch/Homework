@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HomeWork4
-{ 
+{
     internal class Program
     {
         static void Main(string[] args)
@@ -51,7 +51,7 @@ namespace HomeWork4
                 //5
                 Console.ReadLine();
                 int sum = 0;
-                for (int i = 1; i<l;i = i+2)
+                for (int i = 1; i < l; i = i + 2)
                 {
                     sum = sum + r[i];
                 }
@@ -59,10 +59,10 @@ namespace HomeWork4
                 Console.ReadLine();
                 //6 реверс
                 int temp = r[0]; int t;
-                int[] res= new int[l]; 
-                for (int i=0; i<l; i++) 
+                int[] res = new int[l];
+                for (int i = 0; i < l; i++)
                 {
-                    t = l-1 - i;
+                    t = l - 1 - i;
                     res[t] = r[i];
                 }
                 Console.WriteLine("перевернутый массив реверс");
@@ -76,13 +76,13 @@ namespace HomeWork4
                 }
                 Console.WriteLine("количество нечетных элементов массива равно " + j);
                 Console.ReadLine();
-                
+
             }
             //forth1();
             void forth8()
-                {
+            {
                 //8
-                
+
                 if (l % 2 == 0)
                 {
                     for (int i = 0; i <= (l - 1) / 2; i++)
@@ -92,7 +92,8 @@ namespace HomeWork4
                         res[i] = r[t];
 
                     }
-                } else
+                }
+                else
                 {
                     for (int i = 0; i < (l - 1) / 2; i++)
                     {
@@ -101,15 +102,15 @@ namespace HomeWork4
                         res[i] = r[t];
 
                     }
-                    res[(l-1)/2] = r[(l-1)/2];
+                    res[(l - 1) / 2] = r[(l - 1) / 2];
                 }
-               
+
                 Console.WriteLine("перевернутый массив");
                 writeArray(res);
-                Console.ReadLine() ;
+                Console.ReadLine();
             }
             //forth8();
-            void forth9() 
+            void forth9()
             {
                 Console.WriteLine("задайте длину одномерного массива");
                 int l = Int32.Parse(Console.ReadLine());
@@ -120,7 +121,7 @@ namespace HomeWork4
                 int temp = r[0]; int t;
                 int[] res = new int[l];
 
-                for (int i = 0;i < l; i++)
+                for (int i = 0; i < l; i++)
                 {
 
                 }
