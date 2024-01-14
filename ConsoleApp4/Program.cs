@@ -20,7 +20,7 @@ namespace ThirdHomeWork
             if (k == 1) Third1();
             if (k == 2) Third2();
             if (k == 3) Third3();
-            if (k == 4) Third4();
+            if (k == 4) { Third4(); Third4_1(); Third4_2(); }
             if (k == 5) Third5();
             if (k == 6) Third6();
             if (k == 7) Third7();
@@ -35,39 +35,39 @@ namespace ThirdHomeWork
             if (k == 16) Third16();
             if (k == 17) Third17();
             if (k == 18) Third18();
-            if (k == 19) Third19();
+            if (k == 19) { Third19(); Third19_1(); }
             if (k == 20) Third20();
             if (k == 21) Third21();
             if (k == 22) Third22();
-            if (k == 23) Third23();
-
+            if (k == 23) {Third23(); Third23_1(); }
+            Console.ReadLine();
 
             void Third1()
-        //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
-        {
-            Console.WriteLine("Введите 2 числа");
-            int a = Int32.Parse(Console.ReadLine());
-            int b = Int32.Parse(Console.ReadLine());
-            int res = 1;
-
-            for (int i = 1; i <= b; i++)
+            //1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B
             {
-                res = res * a;
+                Console.WriteLine("Введите 2 числа");
+                int a = Int32.Parse(Console.ReadLine());
+                int b = Int32.Parse(Console.ReadLine());
+                int res = 1;
+
+                for (int i = 1; i <= b; i++)
+                {
+                    res = res * a;
+                }
+                Console.WriteLine(res);
             }
-                Console.WriteLine(res); Console.ReadLine();
-        }
             void Third2()
             //2.	Пользователь вводит 1 число (A). Вывести все числа от 1 до 1000, которые делятся на A.
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                
-                for (int i = 1;i <= 1000; i++)
+
+                for (int i = a; i <= 1000; i++)
                 {
                     if (i % a == 0) Console.WriteLine(i + " ");
-                } Console.ReadLine();
+                }
 
-             }
+            }
             void Third3()
             //3.	Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
             {
@@ -76,22 +76,62 @@ namespace ThirdHomeWork
                 int n = 0;//кол-во
                 for (int i = 0; i <= Math.Sqrt(a); i++)
                 {
-                    if (i * i < a) n = n + 1; 
-                    
+                    n = n + 1;
                 }
                 Console.WriteLine("количество положительных целых чисел, квадрат которых меньше " + a + "равно" + n);
-                Console.ReadLine();
-
             }
             void Third4()
             //4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                int n = a -1;
-                while(a%n !=0) { n--; }
+                int n = a / 2;
+                int t = 0;
+                while (a % n != 0) { n--; t = t + 1; }
                 Console.WriteLine("наибольший делитель числа " + a + " равен " + n);
-                Console.ReadLine();
+                Console.WriteLine("кол-во итераций " + t);
+            }
+            void Third4_1()
+                //второй вариант, при четных числах оба алгоритма работают за одну итерацию, при простых числах тоже одинаково
+                //а при нечетных - второй намного меньше проходов требует
+            //4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
+            {
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                int n = 1;
+                int t = 0;
+                for (int i = 2; i <= a / 2; i++)
+                    if (a % i == 0)
+                    {
+                        n = a / i; break;
+                    } else { t = t + 1; }
+                
+                Console.WriteLine("наибольший делитель числа " + a + " равен " + n);
+                Console.WriteLine("кол-во итераций " + t);
+            }
+            void Third4_2()
+            //третий вариант - при четных числах также
+            //а при нечетных с имеющимся делителем - почти также как во втором варианте
+            // при простых числах этот вариант имеет наименьшее число проходов
+            //4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
+            {
+                Console.WriteLine("Введите число");
+                int a = Int32.Parse(Console.ReadLine());
+                int n = 1;
+                int t = 0;
+                int i = 2;
+                while (i <= a / i)
+                {
+                    i++;
+
+                    if (a % i == 0)
+                    {
+                        n = a / i; break;
+                    }
+                    else { t = t + 1; }
+                }
+                Console.WriteLine("наибольший делитель числа " + a + " равен " + n);
+                Console.WriteLine("кол-во итераций " + t);
             }
             void Third5()
             //5.	Пользователь вводит 2 числа (A и B).
@@ -102,15 +142,13 @@ namespace ThirdHomeWork
                 int a = Int32.Parse(Console.ReadLine());
                 int b = Int32.Parse(Console.ReadLine());
                 int res = 0; int n; int m;
-                if (b >=a) { m= b; n = a; } else { m= a; n = b;}
-                
-                    for (int i = n;i <= m; i++)
-                    {
-                        if (i%7 == 0) res = res + i;
-                    }
-                 
+                if (b >= a) { m = b; n = a; } else { m = a; n = b; }
+
+                for (int i = n; i <= m; i++)
+                {
+                    if (i % 7 == 0) res = res + i;
+                }
                 Console.WriteLine("сумма всех чисел из диапазона от " + a + " до " + b + ", которые делятся без остатка на 7 равна " + res);
-                Console.ReadLine();
             }
             void Third6()
             //6.	Пользователь вводит 1 положительное число (N). Выведите N-ое число ряда фибоначчи.
@@ -118,14 +156,13 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите число");
                 int n = Int32.Parse(Console.ReadLine());
-                int m = 1; int t = 1 ; int res = 1;
-                for (int i= 3; i <= n; i++)
+                int m = 1; int t = 1; int res = 1;
+                for (int i = 3; i <= n; i++)
                 {
                     res = m + t;
                     m = t; t = res;
                 }
                 Console.WriteLine(res);
-                Console.ReadLine();
             }
             void Third7()
             //7.	Пользователь вводит 2 числа. Найти их наибольший общий делитель используя алгоритм Евклида.
@@ -134,14 +171,13 @@ namespace ThirdHomeWork
                 int a = Int32.Parse(Console.ReadLine());
                 int b = Int32.Parse(Console.ReadLine());
                 int n; int m;
-                while (a!=b) 
-                { 
-                if (b >= a) {b = b - a; } else {a = a - b; }
+                while (a != b)
+                {
+                    if (b >= a) { b = b - a; } else { a = a - b; }
 
                 }
 
                 Console.WriteLine("НОД равен " + a);
-                Console.ReadLine();
             }
             void Third8()
             //8.Пользователь вводит целое положительное число, которое является кубом целого числа N.
@@ -150,21 +186,19 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
                 int c = Math.Abs(a);
-                int b = 0; int t = a/2;
-                while ( Math.Abs(Math.Pow(t, 3) - a) != 0)
+                int b = 0; int t = a / 2;
+                while (Math.Abs(Math.Pow(t, 3) - a) != 0)
                 {
-                    if (Math.Pow(t, 3) > a) { c = t; } else {  b = t; }
-                    t = (c + b) / 2; 
-                    if (Math.Abs(c - b) <= 1) { t = 0; Console.WriteLine("Введенное целое число не является кубом целого числа"); break; } 
-                    
+                    if (Math.Pow(t, 3) > a) { c = t; } else { b = t; }
+                    t = (c + b) / 2;
+                    if (Math.Abs(c - b) <= 1) { t = 0; Console.WriteLine("Введенное целое число не является кубом целого числа"); break; }
                 }
                 if (t != 0) Console.WriteLine("N " + t);
-               
-                Console.ReadLine();
+
             }
             void Third9()
             //9.	Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
-            
+
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
@@ -172,10 +206,9 @@ namespace ThirdHomeWork
                 while (a % 10 != 0)
                 {
                     if ((a % 2) != 0) n = n + 1;
-                    a = a/ 10;                                       
+                    a = a / 10;
                 }
                 Console.WriteLine(" кол-во нечетных цифр n " + n);
-                Console.ReadLine();
             }
             void Third10()
             //10.Пользователь вводит 1 число.Найти число, которое является зеркальным отображением последовательности цифр заданного числа,
@@ -186,11 +219,10 @@ namespace ThirdHomeWork
                 int b = 0;
                 while (a % 10 != 0)
                 {
-                    b = b *10 + a % 10;
+                    b = b * 10 + a % 10;
                     a = a / 10;
                 }
                 Console.WriteLine("b " + b);
-                Console.ReadLine();
             }
             void Third11()
             //11.Пользователь вводит целое положительное число(N).
@@ -199,21 +231,20 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
                 int n = 0; int m = 0; int t;
-                for (int i = 2; i <= a; i++) {
+                for (int i = 2; i <= a; i++)
+                {
                     //Console.WriteLine("i " + i); //Console.ReadLine();
                     t = i; m = 0; n = 0;
                     while (t % 10 != 0 || t / 10 > 0)
                     {
-                        if ((t % 2) != 0) n = n + t%10; else m= m + t%10;
+                        if ((t % 2) != 0) n = n + t % 10; else m = m + t % 10;
                         t = t / 10; //Console.WriteLine("n " + n + " m " + m + " t " + t); 
                         //Console.ReadLine() ;
 
                     }
                     if (m > n) Console.WriteLine(i);// Console.ReadLine();
                 }
-                
-                //20
-                Console.ReadLine();
+
             }
             void Third12()
             //12.Пользователь вводит 2 числа.Сообщите, есть ли в написании двух чисел одинаковые цифры.
@@ -223,8 +254,8 @@ namespace ThirdHomeWork
                 int a = Int32.Parse(Console.ReadLine());
                 int b = Int32.Parse(Console.ReadLine());
                 bool res = false; int n = a; int m = a; int t = b; int l = b;
-                
-                while (m%10 != 0 || m / 10 > 0)
+
+                while (m % 10 != 0 || m / 10 > 0)
                 {
                     n = m % 10;
                     //Console.WriteLine("n " + n); Console.ReadLine();
@@ -234,12 +265,11 @@ namespace ThirdHomeWork
                         t = l % 10;
                         //Console.WriteLine("t " + t); Console.ReadLine();
                         if (t == n) { res = true; break; }
-                        else l = l/10;
-                    } 
+                        else l = l / 10;
+                    }
                     m = m / 10; //Console.WriteLine("m " + m); Console.ReadLine();
                 }
                 Console.WriteLine(res);
-                Console.ReadLine() ;
 
             }
             void Third13()
@@ -247,13 +277,13 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
-                double s = 0.00; 
-                for (int i = 1; i <=a; i++)
+                double s = 0.00;
+                for (int i = 1; i <= a; i++)
                 {
-                    s = s + (1.0 + 1.0 / (i * i)); Console.WriteLine("s " + s);                    
+                    s = s + (1.0 + 1.0 / (i * i)); Console.WriteLine("s " + s);
                 }
                 Console.WriteLine(s);
-                
+
             }
             void Third14()
             //14.	Дано действительное число х, натуральное число n. Вычислить:
@@ -262,27 +292,27 @@ namespace ThirdHomeWork
                 int n = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("Введите вещественное число");
                 double x = Double.Parse(Console.ReadLine());
-                double s1 =  x; double s2 = 1/x; double s3 = 1; double s4 = x;
+                double s1 = x; double s2 = 1 / x; double s3 = 1; double s4 = x;
 
                 for (int i = 0; i <= n; i++)
                 {
-                    s1 = s1* (x + i); 
-                    s2 = s2 + 1.0/s1;
-                   
+                    s1 = s1 * (x + i);
+                    s2 = s2 + 1.0 / s1;
+
                 }
-                 Console.WriteLine("Результат первого выражения " + s2);
-                for (int m = 1; m<=n; m++)
+                Console.WriteLine("Результат первого выражения " + s2);
+                for (int m = 1; m <= n; m++)
                 {
                     s3 = s3 * m;
-                    s4 = s4 + Math.Pow(x, m)/s3;
+                    s4 = s4 + Math.Pow(x, m) / s3;
                 }
                 Console.WriteLine("результат второго выражения " + s4);
-             }
+            }
 
             void Third15()
             //15.	Дано натуральное n. Вычиcлить:
             {
-
+                Console.WriteLine("не решено");
             }
             void Third16()
             //16.	Вычислить приближенно значение бесконечной суммы
@@ -290,7 +320,7 @@ namespace ThirdHomeWork
             //Нужное приближение считается полученным, если вычислена сумма нескольких первых слагаемых,
             //и очередное слагаемое оказалось по модулю меньше данного положительного числа D (точность). 
             {
-
+                Console.WriteLine("не решено");
             }
 
             //сумма цифр введенного числа
@@ -308,19 +338,19 @@ namespace ThirdHomeWork
             void Third17()
             //17.	Найти все двузначные числа, сумма цифр которых не меняется при умножении числа на 2,3,4,5,6,7,8,9.
             {
-                int s1; int s2; int s3;            
-                
-                for (int i = 2; i <=9; i++) // цикл для чисел от 2 до 9
+                int s1; int s2; int s3;
+
+                for (int i = 2; i <= 9; i++) // цикл для чисел от 2 до 9
                 {
-                    for (int j = 10; j <=99; j++) // цикл для двузначных чисел
+                    for (int j = 10; j <= 99; j++) // цикл для двузначных чисел
                     {
                         s1 = SumNumerals(j);// сумма цифр двузначного числа                        
-                        s2 = i*j;// произведение двузначного числа и числа 
+                        s2 = i * j;// произведение двузначного числа и числа 
                         s3 = SumNumerals(s2);//сумма цифр произведения
-                        
+
                         if (s1 == s3) { Console.WriteLine("двузначное число " + j + " при умножении на " + i + " произв-е " + s2 + " сумма цифр " + s1); }
                     }
-                } Console.ReadLine();
+                }
             }
             //факториал числа
             int Factorial(int n)
@@ -332,7 +362,8 @@ namespace ThirdHomeWork
             //
             void Third18()
             //18.	Найти все трехзначные числа, представимые в виде сумм факториалов своих цифр.
-            { int s = 0; int s1; int s2; int s3; int t;
+            {
+                int s = 0; int s1; int s2; int s3; int t;
                 for (int i = 100; i <= 999; i++)
                 {//Console.WriteLine("number " + i);
                     t = i; s = 0;
@@ -340,12 +371,12 @@ namespace ThirdHomeWork
                     {
                         if (t % 10 != 0)
                         {
-                          s = s + Factorial(t % 10); //Console.WriteLine("цифра " + t%10 + " факториал " + Factorial(t % 10) + " сумма факториалов " + s);
+                            s = s + Factorial(t % 10); //Console.WriteLine("цифра " + t%10 + " факториал " + Factorial(t % 10) + " сумма факториалов " + s);
                         }
                         t = t / 10;
 
                     }
-                    if (s ==i) { Console.WriteLine("число " + i + " представимо в виде суммы факториалов своих цифр"); }
+                    if (s == i) { Console.WriteLine("число " + i + " представимо в виде суммы факториалов своих цифр"); }
                 }
 
             }
@@ -354,15 +385,38 @@ namespace ThirdHomeWork
             //Написать программу решения этой задачи.
             {
                 Console.WriteLine("Введите натуральное число");
-                int n = Int32.Parse(Console.ReadLine()); int l=0;
-                for (int i = 0;i<=n;i++)
+                int n = Int32.Parse(Console.ReadLine()); 
+                bool l = false;
+                int t = 0;
+                for (int i = 1; i <= Math.Sqrt(n)+1; i++)
                 {
-                    for (int j = i+1; j <= n; j++)
+                    for (int j = i + 1; j <= Math.Sqrt(n); j++)
                     {
-                        if (n == (j*j + i*i)) { l = l + 1; Console.WriteLine("можно представить в виде суммы квадратов  чисел i " + i+ " и j " + j); }
+                        if (n == (j * j + i * i)) { l = true; Console.WriteLine("можно представить в виде суммы квадратов  чисел i " + i + " и j " + j); }
+                        t = t + 1;
                     }
                 }
-                if (l==0) { Console.WriteLine("Введенное число нельзя представить в виде суммы квадратов двух натуральных чисел"); }
+                if (l == false) { Console.WriteLine("Введенное число нельзя представить в виде суммы квадратов двух натуральных чисел"); }
+                Console.WriteLine("кол-во итераций " + t);
+            }
+            void Third19_1()
+            //19.	Можно ли заданное натуральное число М представить в виде суммы квадратов двух натуральных чисел?
+            //Написать программу решения этой задачи.
+            {
+                Console.WriteLine("Введите натуральное число");
+                int n = Int32.Parse(Console.ReadLine()); 
+                int l = 0;
+                int t = 0;
+                for (int i = 1; i <= Math.Sqrt(n-1); i++)
+                {
+                    for (int j = i + 1; j <= Math.Sqrt(n-(i*i)) ; j++)
+                    {
+                        if (n == (j * j + i * i)) { l = l + 1; Console.WriteLine("можно представить в виде суммы квадратов  чисел i " + i + " и j " + j); }
+                        t = t + 1;
+                    }
+                }
+                if (l == 0) { Console.WriteLine("Введенное число нельзя представить в виде суммы квадратов двух натуральных чисел"); }
+                Console.WriteLine("кол-во итераций " + t);
             }
             void Third20()
             //20.	Определить, является ли заданное число совершенным , т.е. равным сумме всех своих (положительных) делителей,
@@ -370,18 +424,19 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите натуральное число");
                 int a = Int32.Parse(Console.ReadLine()); int s = 0;
-                for (int i = 1; i<a;i++)
+                for (int i = 1; i < a; i++)
                 {
-                    if (a % i == 0) { s = s + i; Console.WriteLine("делитель " + i); } 
-                } 
-                if (s==a) { Console.WriteLine("число совершенное, равно сумме всех своих положительных делителей"); } 
+                    if (a % i == 0) { s = s + i; Console.WriteLine("делитель " + i); }
+                }
+                if (s == a) { Console.WriteLine("число совершенное, равно сумме всех своих положительных делителей"); }
                 else { Console.WriteLine("число не равно сумме всех своих положительных делителей"); }
             }
 
             int countNumerals(int n)
             {
                 int result = 0;
-                while (n > 0) {
+                while (n > 0)
+                {
                     result++;
                     n = n / 10;
                 }
@@ -394,17 +449,17 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите натуральное число");
                 int a = Int32.Parse(Console.ReadLine()); int length = 0; int t = 1; int j;
-                while ( length < a ) 
-                    {
+                while (length < a)
+                {
                     Console.Write(t);
                     length = length + countNumerals(t);
                     t++;
-                    }
+                }
                 t--;
                 int number = t / Convert.ToInt32(Math.Pow(10, length - a));
                 Console.WriteLine("\n" + t);
-                Console.WriteLine(number % 10);
-                
+                Console.WriteLine(a + "-ая цифра в ряду равна " + number % 10);
+
             }
             void Third22()
             //22.	Дано натуральное k.
@@ -414,14 +469,14 @@ namespace ThirdHomeWork
                 int a = Int32.Parse(Console.ReadLine()); int length = 0; int t = 1; int j;
                 while (length < a)
                 {
-                    Console.Write(t*t);
-                    length = length + countNumerals(t*t);
+                    Console.Write(t * t);
+                    length = length + countNumerals(t * t);
                     t++;
                 }
                 t--;
-                int number = t*t / Convert.ToInt32(Math.Pow(10, length - a));
-                Console.WriteLine("\n" + t * t);
-                Console.WriteLine(number % 10);
+                int number = t * t / Convert.ToInt32(Math.Pow(10, length - a));
+                //Console.WriteLine("\n" + t * t);
+                Console.WriteLine(a + "-ая цифра в ряду равна " + number % 10);
             }
 
             void Third23()
@@ -439,12 +494,10 @@ namespace ThirdHomeWork
                 t--;
                 int number = numFib(t) / Convert.ToInt32(Math.Pow(10, length - a));
                 Console.WriteLine("\n" + numFib(t));
-                Console.WriteLine(number % 10);
+                Console.WriteLine(a + "-ая цифра в ряду равна " + number % 10);
             }
             int numFib(int n)
             {
-                //Console.WriteLine("Введите число");
-                //int n = Int32.Parse(Console.ReadLine());
                 int m = 1; int t = 1; int res = 1;
                 for (int i = 3; i <= n; i++)
                 {
@@ -452,8 +505,30 @@ namespace ThirdHomeWork
                     m = t; t = res;
                 }
                 return res;
-                //Console.WriteLine(res);
-                //Console.ReadLine();
+            }
+            void Third23_1()
+            //23.	Дано натуральное k.
+            //Напечатать k-ю цифру последовательности 1123581321..., в которой выписаны подряд все числа Фибоначчи.
+            {
+                Console.WriteLine("Введите натуральное число");
+                int a = Int32.Parse(Console.ReadLine());
+                int length = 1; 
+                int t = 1; 
+                int i  = 0; int m = 0; int res = 1;
+                Console.Write(res);
+                while (length < a)
+                {
+                     res = m + t;
+                    m = t; t = res;
+                    Console.Write(res);
+                    length = length + countNumerals(res);
+                   
+                    res++;
+                }
+                res--;
+                int number = res / Convert.ToInt32(Math.Pow(10, length - a));
+                Console.WriteLine("\n" + res);
+                Console.WriteLine(a + "-ая цифра в ряду равна " + number % 10);
             }
         }
     }
