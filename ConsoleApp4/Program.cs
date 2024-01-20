@@ -17,29 +17,34 @@ namespace ThirdHomeWork
             int k;
             Console.WriteLine("Введите номер задачи (от 1 до 23)");
             k = Int32.Parse(Console.ReadLine());
-            if (k == 1) Third1();
-            if (k == 2) Third2();
-            if (k == 3) Third3();
-            if (k == 4) { Third4(); Third4_1(); Third4_2(); }
-            if (k == 5) Third5();
-            if (k == 6) Third6();
-            if (k == 7) Third7();
-            if (k == 8) Third8();
-            if (k == 9) Third9();
-            if (k == 10) Third10();
-            if (k == 11) Third11();
-            if (k == 12) Third12();
-            if (k == 13) Third13();
-            if (k == 14) Third14();
-            if (k == 15) Third15();
-            if (k == 16) Third16();
-            if (k == 17) Third17();
-            if (k == 18) Third18();
-            if (k == 19) { Third19(); Third19_1(); }
-            if (k == 20) Third20();
-            if (k == 21) Third21();
-            if (k == 22) Third22();
-            if (k == 23) {Third23(); Third23_1(); }
+
+            switch (k)
+            {
+                case 1: Third1(); break;
+                case 2: Third2(); break;
+                case 3: Third3(); break;
+                case 4: Third4(); Third4_1(); Third4_2(); break;
+                case 5: Third5(); break;
+                case 6: Third6(); break;
+                case 7: Third7(); break;
+                case 8: Third8(); break;
+                case 9: Third9(); break;
+                case 10: Third10(); break;
+                case 11: Third11(); break;
+                case 12: Third12(); break;
+                case 13: Third13(); break;
+                case 14: Third14(); break;
+                case 15: Third15(); break;
+                case 16: Third16(); break;
+                case 17: Third17(); break;
+                case 18: Third18(); break;
+                case 19: Third19(); Third19_1(); break;
+                case 20: Third20(); break;
+                case 21: Third21(); break;
+                case 22: Third22(); break;
+                case 23: Third23(); Third23_1(); break;
+            }
+
             Console.ReadLine();
 
             void Third1()
@@ -62,7 +67,7 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
 
-                for (int i = a; i <= 1000; i++)
+                for (int i = a; i <= 1000; i += a)
                 {
                     if (i % a == 0) Console.WriteLine(i + " ");
                 }
@@ -92,8 +97,8 @@ namespace ThirdHomeWork
                 Console.WriteLine("кол-во итераций " + t);
             }
             void Third4_1()
-                //второй вариант, при четных числах оба алгоритма работают за одну итерацию, при простых числах тоже одинаково
-                //а при нечетных - второй намного меньше проходов требует
+            //второй вариант, при четных числах оба алгоритма работают за одну итерацию, при простых числах тоже одинаково
+            //а при нечетных - второй намного меньше проходов требует
             //4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
             {
                 Console.WriteLine("Введите число");
@@ -104,8 +109,9 @@ namespace ThirdHomeWork
                     if (a % i == 0)
                     {
                         n = a / i; break;
-                    } else { t = t + 1; }
-                
+                    }
+                    else { t = t + 1; }
+
                 Console.WriteLine("наибольший делитель числа " + a + " равен " + n);
                 Console.WriteLine("кол-во итераций " + t);
             }
@@ -203,10 +209,11 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
                 int n = 0; int b = a;
-                while (a % 10 != 0)
+                while (b > 0)
                 {
-                    if ((a % 2) != 0) n = n + 1;
-                    a = a / 10;
+                    if ((b % 2) != 0) { n = n + 1; }
+                    Console.Write("b " + b); Console.WriteLine("n " + n);
+                    b = b / 10;
                 }
                 Console.WriteLine(" кол-во нечетных цифр n " + n);
             }
@@ -217,7 +224,7 @@ namespace ThirdHomeWork
                 Console.WriteLine("Введите число");
                 int a = Int32.Parse(Console.ReadLine());
                 int b = 0;
-                while (a % 10 != 0)
+                while (a > 0)
                 {
                     b = b * 10 + a % 10;
                     a = a / 10;
@@ -235,7 +242,7 @@ namespace ThirdHomeWork
                 {
                     //Console.WriteLine("i " + i); //Console.ReadLine();
                     t = i; m = 0; n = 0;
-                    while (t % 10 != 0 || t / 10 > 0)
+                    while (t > 0) // (t % 10 != 0 || t / 10 > 0)
                     {
                         if ((t % 2) != 0) n = n + t % 10; else m = m + t % 10;
                         t = t / 10; //Console.WriteLine("n " + n + " m " + m + " t " + t); 
@@ -327,7 +334,7 @@ namespace ThirdHomeWork
             int SumNumerals(int n)
             {
                 int s = 0;
-                while (n % 10 != 0 || n / 10 > 0)
+                while (n > 0)
                 {
                     s = s + n % 10;
                     n = n / 10;
@@ -385,10 +392,10 @@ namespace ThirdHomeWork
             //Написать программу решения этой задачи.
             {
                 Console.WriteLine("Введите натуральное число");
-                int n = Int32.Parse(Console.ReadLine()); 
+                int n = Int32.Parse(Console.ReadLine());
                 bool l = false;
                 int t = 0;
-                for (int i = 1; i <= Math.Sqrt(n)+1; i++)
+                for (int i = 1; i <= Math.Sqrt(n) + 1; i++)
                 {
                     for (int j = i + 1; j <= Math.Sqrt(n); j++)
                     {
@@ -404,12 +411,12 @@ namespace ThirdHomeWork
             //Написать программу решения этой задачи.
             {
                 Console.WriteLine("Введите натуральное число");
-                int n = Int32.Parse(Console.ReadLine()); 
+                int n = Int32.Parse(Console.ReadLine());
                 int l = 0;
                 int t = 0;
-                for (int i = 1; i <= Math.Sqrt(n-1); i++)
+                for (int i = 1; i <= Math.Sqrt(n - 1); i++)
                 {
-                    for (int j = i + 1; j <= Math.Sqrt(n-(i*i)) ; j++)
+                    for (int j = i + 1; j <= Math.Sqrt(n - (i * i)); j++)
                     {
                         if (n == (j * j + i * i)) { l = l + 1; Console.WriteLine("можно представить в виде суммы квадратов  чисел i " + i + " и j " + j); }
                         t = t + 1;
@@ -512,17 +519,17 @@ namespace ThirdHomeWork
             {
                 Console.WriteLine("Введите натуральное число");
                 int a = Int32.Parse(Console.ReadLine());
-                int length = 1; 
-                int t = 1; 
-                int i  = 0; int m = 0; int res = 1;
+                int length = 1;
+                int t = 1;
+                int i = 0; int m = 0; int res = 1;
                 Console.Write(res);
                 while (length < a)
                 {
-                     res = m + t;
+                    res = m + t;
                     m = t; t = res;
                     Console.Write(res);
                     length = length + countNumerals(res);
-                   
+
                     res++;
                 }
                 res--;
