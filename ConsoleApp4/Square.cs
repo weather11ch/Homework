@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp4
+{    
 public class Square
 {
     public String col;
@@ -20,4 +21,5 @@ public class Square
     {
         Console.WriteLine(col + " квадрат со стороной " + a + " и площадью " + s);
     }
+  }
 }
